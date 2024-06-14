@@ -17,5 +17,9 @@
   <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="4.8.0" />
   </ItemGroup>
-
+	
+	<ItemGroup>
+		<Resource Include="Image\ФонЧасы.jpg" />
+		<Resource Include="Image\ОсновнойФон.jpg" />
+	</ItemGroup>
 </Project>
