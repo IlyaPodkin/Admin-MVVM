@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Admin_MVVM.ViewModel;
+using System.Windows;
 
 namespace Admin_MVVM
 {
@@ -7,6 +8,7 @@ namespace Admin_MVVM
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = new RegistrationVM();
         }
     }
 }

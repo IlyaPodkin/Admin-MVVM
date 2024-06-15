@@ -3,7 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        xmlns:viewmodel="clr-namespace:Admin_MVVM.ViewModel" 
+        d:DataContext="{d:DesignInstance Type=viewmodel:RegistrationVM}"
+        mc:Ignorable="d"
         Title="Регистрация" Height="550" Width="850"       
         WindowState="Maximized">
 
@@ -64,8 +67,8 @@
                 </Button>
 
                 <TextBox 
-                    x:Name="InputLogin" 
                     materialDesign:HintAssist.Hint="Введите логин" 
+                    Text="{Binding Email}"
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
                     CaretBrush="#FFF7F7F7" 
                     SelectionBrush="#FFF9F9F9" 
@@ -76,8 +79,8 @@
                     materialDesign:TextFieldAssist.SuffixText="Логин должен содержать '@' и '.'"/>
 
                 <TextBox 
-                    x:Name="InputName" 
                     materialDesign:HintAssist.Hint="Введите свою Фамилию и Имя" 
+                    Text="{Binding Name}"
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
                     CaretBrush="#FFF7F7F7" 
                     SelectionBrush="#FFF9F9F9" 
@@ -87,10 +90,10 @@
                     materialDesign:HintAssist.Foreground="White"
                     materialDesign:TextFieldAssist.SuffixText="Например: Подкин Илья"/>
 
-                <PasswordBox 
-                    x:Name="InputPassword" 
+                <TextBox 
                     materialDesign:HintAssist.Hint="Введите пароль" 
-                    Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" 
+                    Text="{Binding Password}"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
                     CaretBrush="White" 
                     Foreground="White" 
                     SelectionBrush="White" 
@@ -100,10 +103,10 @@
                     materialDesign:TextFieldAssist.SuffixText="Пароль должен содержать более 7 символов"/>
 
 
-                <PasswordBox 
-                    x:Name="InputPassTwo" 
+                <TextBox 
+                    Text="{Binding RepeatedPassword}"
                     materialDesign:HintAssist.Hint="Повторный ввод пароля" 
-                    Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" 
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
                     SelectionBrush="#FFF6F5F7" 
                     Foreground="#FFFBFAFA" 
                     CaretBrush="#FFFEFDFF" 
@@ -118,7 +121,8 @@
                     Margin="0 20" 
                     BorderBrush="#FF0B0712" 
                     Foreground="#FFF9F9F9" 
-                    Background="#FF3A3A3A">
+                    Background="#FF3A3A3A"
+                    Command="{Binding AddNewUser}">
 
                     <Button.Effect>
                         <DropShadowEffect 
