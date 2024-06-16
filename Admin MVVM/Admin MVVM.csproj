@@ -1,25 +1,44 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows</TargetFramework>
-    <RootNamespace>Admin_MVVM</RootNamespace>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <UseWPF>true</UseWPF>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<RootNamespace>Admin_MVVM</RootNamespace>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="EntityFramework" Version="6.5.0" />
-    <PackageReference Include="MaterialDesignThemes" Version="4.8.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.6" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.6" />
-    <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
-    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.118" />
-  </ItemGroup>
-	
 	<ItemGroup>
+		<PackageReference Include="EntityFramework" Version="6.5.0" />
+		<PackageReference Include="MaterialDesignThemes" Version="4.8.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.6" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.6" />
+		<PackageReference Include="System.Data.SQLite" Version="1.0.118" />
+		<PackageReference Include="System.Data.SQLite.Core" Version="1.0.118" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Resource Include="Fonts\Montserrat-Black.ttf" />
+		<Resource Include="Fonts\Montserrat-BlackItalic.ttf" />
+		<Resource Include="Fonts\Montserrat-Bold.ttf" />
+		<Resource Include="Fonts\Montserrat-BoldItalic.ttf" />
+		<Resource Include="Fonts\Montserrat-ExtraBold.ttf" />
+		<Resource Include="Fonts\Montserrat-ExtraBoldItalic.ttf" />
+		<Resource Include="Fonts\Montserrat-ExtraLight.ttf" />
+		<Resource Include="Fonts\Montserrat-ExtraLightItalic.ttf" />
+		<Resource Include="Fonts\Montserrat-Italic.ttf" />
+		<Resource Include="Fonts\Montserrat-Light.ttf" />
+		<Resource Include="Fonts\Montserrat-LightItalic.ttf" />
+		<Resource Include="Fonts\Montserrat-Medium.ttf" />
+		<Resource Include="Fonts\Montserrat-MediumItalic.ttf" />
+		<Resource Include="Fonts\Montserrat-Regular.ttf" />
+		<Resource Include="Fonts\Montserrat-SemiBold.ttf" />
+		<Resource Include="Fonts\Montserrat-SemiBoldItalic.ttf" />
+		<Resource Include="Fonts\Montserrat-Thin.ttf" />
+		<Resource Include="Fonts\Montserrat-ThinItalic.ttf" />
 		<Resource Include="Image\ФонЧасы.jpg" />
 		<Resource Include="Image\ОсновнойФон.jpg" />
 	</ItemGroup>
+
 </Project>

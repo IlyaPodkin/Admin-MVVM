@@ -46,7 +46,7 @@ namespace Admin_MVVM.ViewModel
             }
         }
 
-        //проверка
+        //проверка валидности заполняемых полей 
         private bool IsValidInput(Window window)
         {
             bool isValid = true;
@@ -78,6 +78,7 @@ namespace Admin_MVVM.ViewModel
             return isValid;
         }
 
+        // Сброс цвета полей 
         private void ResetBlockControls(Window window)
         {
             SetBlockControlColor(window, "InputEmail", Brushes.Transparent);
@@ -86,6 +87,7 @@ namespace Admin_MVVM.ViewModel
             SetBlockControlColor(window, "InputRepeatedPassword", Brushes.Transparent);
         }
 
+        // Установка определенного цвета для указанного поля
         private void SetBlockControlColor(Window window, string blockName, Brush color)
         {
             Control? block = window.FindName(blockName) as Control;
