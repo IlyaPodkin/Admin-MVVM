@@ -1,12 +1,7 @@
 ﻿using Admin_MVVM.Model.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Xml.Linq;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace Admin_MVVM.ViewModel
 {
@@ -19,38 +14,84 @@ namespace Admin_MVVM.ViewModel
 
         private RelayCommand? _addNewUser;
 
-        //Добавление пользователя и проверки на ввод
+        //Команда для добавления пользователя
         public RelayCommand AddNewUser
         {
             get
             {
-                return _addNewUser ?? new RelayCommand(obj =>
+                return _addNewUser ??= new RelayCommand(obj =>
                 {
+                    Window? window = obj as Window;
+                    ResetBlockControls(window);
 
-                    if (Name != null && Email != null && Password != null && RepeatedPassword != null)
+                    if (IsValidInput(window))
                     {
-                        if (!Email.Contains("@") || !Email.Contains(".") || Password.Length < 7 || Name == "")
+                        if (Password == RepeatedPassword)
                         {
-                            MessageBox.Show("Некорретные данные, проверьте заполенные поля");
+                            string result = DataUser.CreateUser(Name, Email, Password);
+                            MessageBox.Show(result);
                         }
                         else
                         {
-                            if (Password == RepeatedPassword)
-                            {
-                                string result = "";
-                                result = DataUser.CreateUser(Name, Email, Password);
-                            }
-                            else
-                            {
-                                MessageBox.Show("Введенные пароли не совпадают");
-                            }
+                            SetBlockControlColor(window, "InputPassword", Brushes.DarkRed);
+                            SetBlockControlColor(window, "InputRepeatedPassword", Brushes.DarkRed);
+                            MessageBox.Show("Введенные пароли не совпадают");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Заполните все поля");
+                        MessageBox.Show("Некорректные данные, проверьте заполненные поля");
                     }
                 });
+            }
+        }
+
+        //проверка
+        private bool IsValidInput(Window window)
+        {
+            bool isValid = true;
+
+            if (string.IsNullOrEmpty(Name))
+            {
+                SetBlockControlColor(window, "InputName", Brushes.DarkRed);
+                isValid = false;
+            }
+
+            if (string.IsNullOrEmpty(Email) || !Email.Contains("@") || !Email.Contains("."))
+            {
+                SetBlockControlColor(window, "InputEmail", Brushes.DarkRed);
+                isValid = false;
+            }
+
+            if (string.IsNullOrEmpty(Password) || Password.Length < 7)
+            {
+                SetBlockControlColor(window, "InputPassword", Brushes.DarkRed);
+                isValid = false;
+            }
+
+            if (string.IsNullOrEmpty(RepeatedPassword) || Password != RepeatedPassword || RepeatedPassword.Length < 7)
+            {
+                SetBlockControlColor(window, "InputRepeatedPassword", Brushes.DarkRed);
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        private void ResetBlockControls(Window window)
+        {
+            SetBlockControlColor(window, "InputEmail", Brushes.Transparent);
+            SetBlockControlColor(window, "InputName", Brushes.Transparent);
+            SetBlockControlColor(window, "InputPassword", Brushes.Transparent);
+            SetBlockControlColor(window, "InputRepeatedPassword", Brushes.Transparent);
+        }
+
+        private void SetBlockControlColor(Window window, string blockName, Brush color)
+        {
+            Control? block = window.FindName(blockName) as Control;
+            if (block != null)
+            {
+                block.BorderBrush = color;
             }
         }
     }

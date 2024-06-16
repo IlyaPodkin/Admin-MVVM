@@ -7,7 +7,8 @@
         xmlns:viewmodel="clr-namespace:Admin_MVVM.ViewModel" 
         d:DataContext="{d:DesignInstance Type=viewmodel:RegistrationVM}"
         mc:Ignorable="d"
-        Title="Регистрация" Height="550" Width="850"       
+        Title="Регистрация" Height="550" Width="850"   
+        Name ="AddNewUser"
         WindowState="Maximized">
 
     <Grid>
@@ -67,6 +68,7 @@
                 </Button>
 
                 <TextBox 
+                    Name ="InputEmail"
                     materialDesign:HintAssist.Hint="Введите логин" 
                     Text="{Binding Email}"
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
@@ -79,6 +81,7 @@
                     materialDesign:TextFieldAssist.SuffixText="Логин должен содержать '@' и '.'"/>
 
                 <TextBox 
+                    Name ="InputName"
                     materialDesign:HintAssist.Hint="Введите свою Фамилию и Имя" 
                     Text="{Binding Name}"
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
@@ -91,6 +94,7 @@
                     materialDesign:TextFieldAssist.SuffixText="Например: Подкин Илья"/>
 
                 <TextBox 
+                    Name ="InputPassword"
                     materialDesign:HintAssist.Hint="Введите пароль" 
                     Text="{Binding Password}"
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
@@ -104,6 +108,7 @@
 
 
                 <TextBox 
+                    Name ="InputRepeatedPassword"
                     Text="{Binding RepeatedPassword}"
                     materialDesign:HintAssist.Hint="Повторный ввод пароля" 
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
@@ -122,7 +127,8 @@
                     BorderBrush="#FF0B0712" 
                     Foreground="#FFF9F9F9" 
                     Background="#FF3A3A3A"
-                    Command="{Binding AddNewUser}">
+                    Command="{Binding AddNewUser}"
+                    CommandParameter="{Binding ElementName=AddNewUser}">
 
                     <Button.Effect>
                         <DropShadowEffect 

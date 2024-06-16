@@ -23,23 +23,18 @@ namespace Admin_MVVM.Model.Data
         //Добавление пользователя
         public static string CreateUser(string name, string email, string password)
         {
-            string result = "Уже существует";
+            string result = "Вы ввели данные уже существующего логина или пароля. Введите другие учетные данные.";
             using (ApplicationContext db = new ApplicationContext())
             {
                 //Проверка на наличие такого же пользователя
-                bool IsCheckExist = db.Users.Any(u => u.Name == name && u.Email == email && u.Password == password);
+                bool IsCheckExist = db.Users.Any(u => u.Email == email || u.Password == password);
                 if (!IsCheckExist)
                 {
                     Guid id = Guid.NewGuid();
                     User user = new User(id, name, email, password);
                     db.Users.Add(user);
                     db.SaveChanges();
-                    result = "Добавлено";
-                    MessageBox.Show("Пользователь: " + name + ", зарегистрирован");
-                }
-                else
-                {
-                    MessageBox.Show("Пользователь: " + name + ", уже зарегистрирован. Введите другие учетные данные.");
+                    result = "Пользователь: " + name + ", зарегистрирован";
                 }
 
                 return result;
