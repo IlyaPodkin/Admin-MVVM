@@ -1,0 +1,165 @@
+﻿<Window x:Class="Admin_MVVM.View.Authorization"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Admin_MVVM.View"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:viewmodel="clr-namespace:Admin_MVVM.ViewModel" 
+        d:DataContext="{d:DesignInstance Type=viewmodel:AuthorizationVM}"
+        mc:Ignorable="d"
+        Title="Authorization"
+        WindowState="Maximized"
+        Height="450" 
+        Width="800">
+    <!--Основная сетка и основной фон-->
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Image/ФонЧасы.jpg"/>
+        </Grid.Background>
+
+        <!--Сетка с данными для авторизации-->
+        <Border 
+            Margin="15" 
+            VerticalAlignment="Center" 
+            Padding="30" 
+            Width="650" 
+            Height="400" 
+            CornerRadius="20">
+
+            <!--Фон для сетки с данными для авторизации-->
+            <Border.Background>
+                <ImageBrush ImageSource="/Image/ОсновнойФон.jpg"/>
+            </Border.Background>
+
+            <!--Теневой эффект для сетки с данными для авторизации-->
+            <Border.Effect>
+                <DropShadowEffect 
+                    BlurRadius="30" 
+                    Color="LightGray"
+                    ShadowDepth="0"/>
+            </Border.Effect>
+
+            <!--Стекпанель с данными для авторизации-->
+            <StackPanel>
+                <!--Заголовок и кнопка перехода к списку пользователей-->
+                <Grid Margin="0,0,0,40">
+
+                    <TextBlock 
+                        Text="АВТОРИЗАЦИЯ" 
+                        FontSize="30" 
+                        Margin="0 0 0 20" 
+                        Foreground="White" FontStyle="Italic" FontWeight="Bold"/>
+
+                    <Button 
+                        x:Name="ButtonShowUsers" 
+                        HorizontalAlignment="Right" 
+                        VerticalAlignment="Bottom"
+                        Content="СПИСОК ПОЛЬЗОВАТЕЛЕЙ" 
+                        BorderBrush="{x:Null}" 
+                        Foreground="White" 
+                        Background="{x:Null}" 
+                        FontWeight="Normal"
+                        FontFamily="Montserrat"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                        Command="{Binding GetToTheUsersWindow}"
+                        FontSize="16">
+
+                        <Button.Effect>
+                            <DropShadowEffect 
+                                BlurRadius="30" 
+                                Color="LightGray" 
+                                ShadowDepth="0"/>
+                        </Button.Effect>
+                    </Button>
+                </Grid>
+
+                <!--Кнопка "Регистрация" и ее параметры-->
+                <Grid 
+                 Margin="0 0 0 0">
+
+                    <Button 
+                        x:Name="ButtonRegistration" 
+                        Margin="0,0,0,10"
+                        HorizontalAlignment="Right" 
+                        Content="РЕГИСТРАЦИЯ" 
+                        BorderBrush="#FFEFEFEF" 
+                        Foreground="White" 
+                        Background="#FF383838" 
+                        FontFamily="Montserrat"
+                        FontWeight="Normal" 
+                        FontSize="15" 
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                        Command="{Binding GetToTheRegistration}"
+                        Cursor="Hand">
+
+                        <Button.Effect>
+                            <DropShadowEffect 
+                                BlurRadius="10" 
+                                Color="#FFE2E2E2" 
+                                ShadowDepth="0"/>
+
+                        </Button.Effect>
+                    </Button>
+                </Grid>
+
+                <!--Текст Бокс для ввода логина-->
+                <TextBox 
+                    x:Name="InputEmail" 
+                    FontWeight="Light"
+                    FontFamily="Montserrat" 
+                    FontSize="14"
+                    materialDesign:HintAssist.Hint="Введите логин" 
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                    Text="{Binding Email}"
+                    CaretBrush="#FFF7F7F7" 
+                    SelectionBrush="#FFF9F9F9" 
+                    Foreground="#FFF5F4F4" 
+                    BorderBrush="#89F7F7F7" 
+                    SelectionTextBrush="Black"
+                    materialDesign:HintAssist.Foreground="White"
+                    materialDesign:TextFieldAssist.UnderlineBrush="White"/>
+
+                <!--Текст Бокс для ввода пароля-->
+                <TextBox
+                    x:Name="InputPassword" 
+                    FontWeight="Light"
+                    FontFamily="Montserrat" 
+                    FontSize="14"
+                    materialDesign:HintAssist.Hint="Введите пароль" 
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    Text="{Binding Password}"
+                    materialDesign:HintAssist.Foreground="White"
+                    materialDesign:TextFieldAssist.UnderlineBrush="White"
+                    CaretBrush="White" 
+                    Foreground="White" 
+                    SelectionBrush="White"
+                    BorderBrush="#89FBF7F7"/>
+
+                <!--Кнопка "Войти в кабинет" и ее параметры-->
+                <Button 
+                    x:Name="ConfirmationOfRegistration" 
+                    Content="ВОЙТИ В КАБИНЕТ" 
+                    Margin="0 30" 
+                    BorderBrush="#FFEFEFEF" 
+                    Foreground="#FFF9F9F9" 
+                    Background="#FF383838"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                    Command="{Binding GetToTheHomeWindow}" 
+                    FontFamily="Montserrat" 
+                    FontWeight="Normal" 
+                    FontSize="15" 
+                    Cursor="Hand">
+
+                    <Button.Effect>
+                        <DropShadowEffect 
+                            BlurRadius="10" 
+                            Color="LightGray" 
+                            ShadowDepth="0"/>
+
+                    </Button.Effect>
+                </Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

@@ -44,10 +44,12 @@
 
                 <TextBlock 
                     Text="РЕГИСТРАЦИЯ" 
-                    FontSize="28" 
-                    Style="{StaticResource CustomFont}"
+                    FontSize="30" 
                     Margin="0 0 0 20" 
-                    Foreground="White" FontStyle="Italic" FontWeight="Bold"/>
+                    Foreground="White" 
+                    FontStyle="Italic" 
+                    FontWeight="Bold" 
+                    FontFamily="Montserrat"/>
 
                 <!--Кнопка перехода на авторизацию-->
                 <Button 
@@ -60,7 +62,9 @@
                     Background="#FF383838" 
                     FontFamily="Montserrat"
                     FontWeight="Normal" 
-                    FontSize="16" 
+                    Command="{Binding GetToTheAuthorization}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                    FontSize="15" 
                     Cursor="Hand">
 
                     <Button.Effect>
@@ -85,7 +89,8 @@
                     materialDesign:TextFieldAssist.UnderlineBrush="White"
                     materialDesign:HintAssist.Foreground="White"
                     materialDesign:TextFieldAssist.SuffixText="Логин должен содержать '@' и '.'" 
-                    FontFamily="Montserrat" FontSize="14"/>
+                    FontFamily="Montserrat" 
+                    FontSize="14"/>
 
                 <TextBox 
                     FontWeight="Light"
@@ -99,7 +104,9 @@
                     BorderBrush="#89F7F7F7"
                     materialDesign:TextFieldAssist.UnderlineBrush="White"
                     materialDesign:HintAssist.Foreground="White"
-                    materialDesign:TextFieldAssist.SuffixText="Например: Подкин Илья" FontFamily="Montserrat" FontSize="14"/>
+                    materialDesign:TextFieldAssist.SuffixText="Например: Подкин Илья" 
+                    FontFamily="Montserrat" 
+                    FontSize="14"/>
 
                 <TextBox 
                     FontWeight="Light"
@@ -114,7 +121,8 @@
                     BorderBrush="#89FBF7F7"
                     materialDesign:TextFieldAssist.UnderlineBrush="White"
                     materialDesign:HintAssist.Foreground="White"
-                    materialDesign:TextFieldAssist.SuffixText="Пароль должен содержать более 7 символов" FontSize="14" />
+                    materialDesign:TextFieldAssist.SuffixText="Пароль должен содержать более 7 символов" 
+                    FontSize="14" />
 
 
                 <TextBox 
@@ -129,7 +137,8 @@
                     CaretBrush="#FFFEFDFF" 
                     BorderBrush="#89FBF3F3"
                     materialDesign:TextFieldAssist.UnderlineBrush="White"
-                    materialDesign:HintAssist.Foreground="White" FontSize="14"/>
+                    materialDesign:HintAssist.Foreground="White" 
+                    FontSize="14"/>
 
                 <!--Кнопка регистрации-->
                 <Button 

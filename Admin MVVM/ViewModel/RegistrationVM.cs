@@ -1,4 +1,7 @@
 ﻿using Admin_MVVM.Model.Data;
+using Admin_MVVM.View;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -13,6 +16,25 @@ namespace Admin_MVVM.ViewModel
         public string? RepeatedPassword { get; set; }
 
         private RelayCommand? _addNewUser;
+        private RelayCommand? _getToTheAuthorization;
+
+        //Команда открытия окна авторизации
+        public RelayCommand GetToTheAuthorization
+        {
+            get
+            {
+                return _getToTheAuthorization ??= new RelayCommand(obj =>
+                {
+
+                    if (obj is Window window)
+                    {
+                        OpenAuthorization();
+                        window.Close();
+                    }
+                }
+                );
+            }
+        }
 
         //Команда для добавления пользователя
         public RelayCommand AddNewUser
@@ -30,6 +52,11 @@ namespace Admin_MVVM.ViewModel
                         {
                             string result = DataUser.CreateUser(Name, Email, Password);
                             MessageBox.Show(result);
+                            if (result != "Вы ввели данные уже существующего логина или пароля. Введите другие учетные данные.")
+                            {
+                                OpenAuthorization();
+                                window.Close();
+                            }
                         }
                         else
                         {
@@ -96,5 +123,15 @@ namespace Admin_MVVM.ViewModel
                 block.BorderBrush = color;
             }
         }
+        //Методы открытия окон
+        private void OpenAuthorization()
+        {
+            Authorization authorization = new Authorization();
+            authorization.Show();
+
+        }
+        //Методы по Хэшированию пароля
+        #region
+        #endregion
     }
 }
