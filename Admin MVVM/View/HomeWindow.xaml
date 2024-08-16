@@ -3,10 +3,95 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Admin_MVVM.View"
         mc:Ignorable="d"
-        Title="HomeWindow" Height="450" Width="800">
+        WindowState="Maximized"
+        Title="Главная страница" Height="450" Width="800">
+
     <Grid>
-        
+        <Grid.Background>
+            <ImageBrush ImageSource="\Image\ОсновнойФон.jpg"/>
+        </Grid.Background>
+
+        <StackPanel>
+            <TextBlock 
+                HorizontalAlignment="Center" 
+                FontSize="22" 
+                FontFamily="Montserrat" 
+                Margin="0,30,0,0" 
+                Text="ДАННЫЕ О ЧЕЛОВЕКЕ И ЕГО ОБЯЗАТЕЛЬСТВА" 
+                Foreground="White" 
+                FontStyle="Italic"/>
+
+            <!--Кнопки добавления и удаления-->
+            <DockPanel VerticalAlignment="Top" Margin="40,10">
+
+                <Button 
+                    Background="{x:Null}" 
+                    BorderBrush="{x:Null}">
+
+                    <materialDesign:PackIcon 
+                        Foreground="White" 
+                        Kind="Plus" 
+                        Width="25" 
+                        Height="25" />
+                </Button>
+
+                <Button 
+                    Background="{x:Null}" 
+                    BorderBrush="{x:Null}">
+
+                    <materialDesign:PackIcon 
+                        Foreground="White" 
+                        Kind="Minus" 
+                        Width="25" 
+                        Height="25" />
+                </Button>
+
+                <Button 
+                    Background="{x:Null}" 
+                    BorderBrush="{x:Null}">
+
+                    <materialDesign:PackIcon 
+                        Foreground="White" 
+                        Kind="Refresh" 
+                        Width="25" 
+                        Height="25" />
+                </Button>
+
+                <Grid HorizontalAlignment="Right">
+                    <Button 
+                        Background="{x:Null}" 
+                        BorderBrush="{x:Null}" >
+
+                        <materialDesign:PackIcon 
+                            Foreground="White" 
+                            Kind="ExitRun" 
+                            Width="25" 
+                            Height="25" />
+                    </Button>
+                </Grid>
+            </DockPanel>
+
+            <Grid Margin="40,10">
+                <DataGrid 
+                    x:Name="DataGridGrades" 
+                    AutoGenerateColumns="False" 
+                    Background="#FF9A9A9A" 
+                    BorderBrush="#1F000000" 
+                    Foreground="#DD020202">
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Ф.И.О." Width="auto" Binding="{Binding }" Foreground="Black" SortDirection="Descending"/>
+                        <DataGridTextColumn Header="Дата рождения" Width="auto" Binding="{Binding }" Foreground="Black" SortDirection="Descending"/>
+                        <DataGridTextColumn Header="Серия и номер паспорта" Width="auto" Binding="{Binding }" Foreground="Black" SortDirection="Descending"/>
+                        <DataGridTextColumn Header="Номер договора" Width="auto" Binding="{Binding }" Foreground="Black" SortDirection="Descending"/>
+                        <DataGridTextColumn Header="Дата договора" Width="auto" Binding="{Binding }" Foreground="Black" SortDirection="Descending"/>
+                        <DataGridTextColumn Header="Сумма обязательства" Width="auto" Binding="{Binding }" Foreground="Black" SortDirection="Descending"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </StackPanel>
     </Grid>
 </Window>
