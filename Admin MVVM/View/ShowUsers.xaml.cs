@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Admin_MVVM.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace Admin_MVVM.View
         public ShowUsers()
         {
             InitializeComponent();
+            DataContext = new ShowUsersVM();
         }
     }
 }

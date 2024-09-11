@@ -8,15 +8,18 @@
         xmlns:viewmodel="clr-namespace:Admin_MVVM.ViewModel" 
         d:DataContext="{d:DesignInstance Type=viewmodel:AuthorizationVM}"
         mc:Ignorable="d"
-        Title="Authorization"
+        Title="Авторизация"
         WindowState="Maximized"
         Height="450" 
         Width="800">
     <!--Основная сетка и основной фон-->
     <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="/Image/ФонЧасы.jpg"/>
-        </Grid.Background>
+        <Image Source="/Image/ФонЧасы.jpg" Stretch="Fill">
+            <Image.Effect>
+                <BlurEffect Radius="15"/>
+                <!-- Настройте радиус для нужного уровня размытия -->
+            </Image.Effect>
+        </Image>
 
         <!--Сетка с данными для авторизации-->
         <Border 
@@ -159,7 +162,6 @@
                             BlurRadius="10" 
                             Color="LightGray" 
                             ShadowDepth="0"/>
-
                     </Button.Effect>
                 </Button>
             </StackPanel>

@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:local="clr-namespace:Admin_MVVM.View"
+        xmlns:local="clr-namespace:Admin_MVVM.View" 
         mc:Ignorable="d"
         WindowState="Maximized"
         Title="ShowUsers" Height="450" Width="800">
@@ -76,19 +76,21 @@
 
             <Grid Margin="40,10">
                 <DataGrid 
-                    x:Name="DataGridGrades" 
+                    ItemsSource="{Binding AllUsers}"
                     AutoGenerateColumns="False" 
                     Background="#FF9A9A9A" 
                     BorderBrush="#1F000000" 
-                    Foreground="#DD020202">
+                    Foreground="#DD020202"
+                    Margin="0,0,0,-270">
 
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Ф.И.О." Width="auto" Binding="{Binding }" Foreground="Black" SortDirection="Descending"/>
-                        <DataGridTextColumn Header="Дата рождения" Width="auto" Binding="{Binding }" Foreground="Black" SortDirection="Descending"/>
-                        <DataGridTextColumn Header="Серия и номер паспорта" Width="auto" Binding="{Binding }" Foreground="Black" SortDirection="Descending"/>
-                        <DataGridTextColumn Header="Номер договора" Width="auto" Binding="{Binding }" Foreground="Black" SortDirection="Descending"/>
-                        <DataGridTextColumn Header="Дата договора" Width="auto" Binding="{Binding }" Foreground="Black" SortDirection="Descending"/>
-                        <DataGridTextColumn Header="Сумма обязательства" Width="auto" Binding="{Binding }" Foreground="Black" SortDirection="Descending"/>
+                        <DataGridTextColumn Header="Дата рождения" Width="auto" Binding="{Binding FullName}" Foreground="Black" SortDirection="Descending"/>
+                        <!--<DataGridTextColumn Header="Ф.И.О." Width="auto" Binding="{Binding FullName}" Foreground="Black" SortDirection="Descending"/>
+                        <DataGridTextColumn Header="Дата рождения" Width="auto" Binding="{Binding DateOfBirth}" Foreground="Black" SortDirection="Descending"/>
+                        <DataGridTextColumn Header="Серия и номер паспорта" Width="auto" Binding="{Binding NumbersOfPassport}" Foreground="Black" SortDirection="Descending"/>
+                        <DataGridTextColumn Header="Номер договора" Width="auto" Binding="{Binding NumberOfContract}" Foreground="Black" SortDirection="Descending"/>
+                        <DataGridTextColumn Header="Дата договора" Width="auto" Binding="{Binding DateOfContract}" Foreground="Black" SortDirection="Descending"/>
+                        <DataGridTextColumn Header="Сумма обязательства" Width="auto" Binding="{Binding SumContract}" Foreground="Black" SortDirection="Descending"/>-->
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>

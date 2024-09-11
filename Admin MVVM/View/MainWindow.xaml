@@ -13,9 +13,12 @@
 
     <Grid>
         <!--Задний фон-->
-        <Grid.Background>
-            <ImageBrush ImageSource="\Image\ФонЧасы.jpg"/>
-        </Grid.Background>
+        <Image Source="/Image/ФонЧасы.jpg" Stretch="Fill">
+            <Image.Effect>
+                <BlurEffect Radius="25"/>
+                <!-- Настройте радиус для нужного уровня размытия -->
+            </Image.Effect>
+        </Image>
 
         <!--Параметры формы заполнения-->
         <Border 

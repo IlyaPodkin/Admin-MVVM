@@ -9,18 +9,15 @@ namespace Admin_MVVM.Model.Data
 {
     class ApplicationContext : DbContext
     {
-        //Добавление данных в таблицу Users
         public DbSet<User> Users { get; set; } = null!;
 
         public ApplicationContext() 
         {
-            // если БД нет, то этот метод создаст её
             Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //Строка подключения БД
             optionsBuilder.UseSqlite("Data Source=Admin.db");
         }
 
